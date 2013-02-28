@@ -10,7 +10,9 @@ public class EAN {
 		this.pruefArray = new int[12];
 		if (pruefSumme.length() == pruefArray.length) {
 			for (int i = 0; i < pruefArray.length; i++) {
-				if (this.pruefArray[i] >= 0 && this.pruefArray[i] >= 9)
+				if (Character.getNumericValue(this.pruefString.charAt(i)) >= 0
+						&& Character
+								.getNumericValue(this.pruefString.charAt(i)) <= 9)
 					this.pruefArray[i] = Character
 							.getNumericValue(this.pruefString.charAt(i));
 			}
@@ -40,34 +42,14 @@ public class EAN {
 			quersumme += this.getPruefArray()[i];
 
 		}
-		output = ""+ quersumme%10;
+		output = "" + quersumme % 10;
 
 		return output;
 
 	}
 
 	public String toString() {
-		int[] code = new int[12];
-		for (int i = 0; i < code.length; i++) {
-			code[i] = Character
-					.getNumericValue(this.getPruefString().charAt(i));
-
-		}
-		int[] gewicht = new int[code.length];
-		for (int i = 0; i < code.length; i++) {
-			if (gewicht[i] % 2 == 0)
-				gewicht[i] = 1;
-			else
-				gewicht[i] = 3;
-		}
-		int[] produkt = new int[code.length];
-		int gesamt = 0;
-		for (int i = 0; i < code.length; i++) {
-			produkt[i] = code[i] * gewicht[i];
-			gesamt += produkt[i];
-		}
-		int quersummeGesamt = gesamt % 10;
-		String output = "" + quersummeGesamt;
+		String output = this.berechnePruefsumme();
 		return output;
 	}
 
