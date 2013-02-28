@@ -42,7 +42,7 @@ public class EAN {
 			quersumme += this.getPruefArray()[i];
 
 		}
-		output = "" + quersumme % 10;
+		output = "" + (10 - (quersumme % 10));
 
 		return output;
 
