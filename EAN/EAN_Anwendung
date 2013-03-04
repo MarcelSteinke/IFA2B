@@ -1,0 +1,17 @@
+package anwendung;
+import javax.swing.*;
+
+
+public class EAN_Anwendung {
+  public static void main(String[] args){
+  	String inStr = null;
+  	EAN ean = null;
+  	
+  	
+  	inStr = JOptionPane.showInputDialog(null, "12-stellige EAN-Zahl eingeben:", "978390184611");
+  	
+  	ean = new EAN(inStr);
+  	JOptionPane.showMessageDialog(null, "EAN-Prüfziffer: "+ ean.toString() +"\n\n für: "+inStr+"\n\n" );
+  }
+
+}
